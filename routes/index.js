@@ -2,7 +2,7 @@ const models = require('../models/index').models
 
 module.exports = app => {
     app.get("/", (req, res) => {
-        res.send("Ticket API")
+        res.send("Ticket API of backendvouch")
     })
 
     app.get("/tickets", (req, res)=> {
