@@ -11,8 +11,10 @@
   "author": "fadillah bilqis",
   "license": "MIT",
   "dependencies": {
+    "@heroku/foreman": "^2.0.2",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
+    "dotenv-extended": "^2.3.0",
     "express": "^4.16.3",
     "mongoose": "^5.2.14",
     "nodemon": "^1.18.4"
