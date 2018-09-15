@@ -30,7 +30,7 @@ module.exports = app => {
         const details = new models();
         details.id = req.body.id;
         details.name = req.body.name;
-        details.status = "Open";
+        details.status = req.body.status;
         details.logs = req.body.logs;
 
         if(details.name){
