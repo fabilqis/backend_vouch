@@ -27,14 +27,14 @@ module.exports = app => {
     })
 
     app.post("/tickets/add", (req, res)=> {
-    models.findOne({ name: req.body.name }, (err, ticket) => {
+    models.findOne({ name: req.body.name }, (err, details) => {
         if (!details) {
         const details = new models();
         details.name = req.body.name;
         details.status = "Open";
         details.logs = req.body.logs;
-        ticket.createdAt = new Date();
-        ticket.updatedAt = new Date();
+        details.createdAt = new Date();
+        details.updatedAt = new Date();
 
         if(details.name){
             details.save((err, details) => {
