@@ -10,5 +10,5 @@ const TicketScheme = new Scheme({
     
 })
 
-let models = mongoose.model("ticket", TicketScheme, "ticket", true);
+let models = mongoose.model("details", TicketScheme, "details", true);
 module.exports.models = models;
