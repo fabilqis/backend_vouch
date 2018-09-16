@@ -2,10 +2,11 @@ const mongoose = require('mongoose')
 const Scheme = mongoose.Schema
 
 const TicketScheme = new Scheme({
-    id: Number,
     name :  String,
     status :  String,
-    logs : String
+    logs : String,
+    createdAt : String,
+    updateAt : String
     
 })
 

@@ -10,7 +10,7 @@ module.exports = app => {
             if (err)
             return res.send.err
             res.json(details)
-        })
+        }).sort("-updateAt")
     })
 
     app.get("/tickets/:stats", (req, res) => {
@@ -27,11 +27,14 @@ module.exports = app => {
     })
 
     app.post("/tickets/add", (req, res)=> {
+    models.findOne({ name: req.body.name }, (err, ticket) => {
+        if (!details) {
         const details = new models();
-        details.id = req.body.id;
         details.name = req.body.name;
         details.status = "Open";
         details.logs = req.body.logs;
+        ticket.createdAt = new Date();
+        ticket.updatedAt = new Date();
 
         if(details.name){
             details.save((err, details) => {
@@ -42,9 +45,12 @@ module.exports = app => {
                 })
             })
         } else {
-            res.status(400).send("Please fill all data")
-        }
+            res.status(400).send("Please fill all data");}
+        } else {
+            res.status(400).send("This ticket name is taken");
+          }
     })
+})
 
     app.post("/tickets/delete", (req, res) => {
         models.findById(req.body._id, (err, details) => {
@@ -66,7 +72,7 @@ module.exports = app => {
             if (details){
                 details.status = req.body.status
                 details.logs = req.body.logs
-                
+                details.updatedAt = new Date();
                 details.save((err, details) => {
                     res.json({
                         status : 'Ticket Updated',
