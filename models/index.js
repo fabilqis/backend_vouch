@@ -1,14 +1,13 @@
-const mongoose = require('mongoose')
-const Scheme = mongoose.Schema
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const TicketScheme = new Scheme({
-    name :  String,
-    status :  String,
-    logs : String,
-    createdAt : String,
-    updateAt : String
-    
-})
+const Ticketschema = new Schema({
+  name: String,
+  status: String,
+  logs: String,
+  createdAt: String,
+  updatedAt: String
+});
 
-let models = mongoose.model("details", TicketScheme, "details", true);
-module.exports.models = models;
+let Models = mongoose.model("ticket", Ticketschema, "ticket", true);
+module.exports.Models = Models;
